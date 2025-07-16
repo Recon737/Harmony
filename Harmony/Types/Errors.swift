@@ -125,6 +125,7 @@ public enum AuthenticationError: HarmonyError
     case notAuthenticated
     case noSavedCredentials
     case tokenExpired
+    case invalidClientID
     case other(Error)
     
     public var underlyingError: HarmonyError? {
@@ -382,6 +383,7 @@ extension AuthenticationError
         case .notAuthenticated: return NSLocalizedString("The current user is not authenticated.", comment: "")
         case .noSavedCredentials: return NSLocalizedString("There are no saved credentials for the current user.", comment: "")
         case .tokenExpired: return NSLocalizedString("The authentication token has expired.", comment: "")
+        case .invalidClientID: return NSLocalizedString("The provided client ID is invalid.", comment: "")
         case .other(let error as NSError): return error.localizedFailureReason ?? error.localizedDescription
         }
     }
